@@ -1,0 +1,16 @@
+install aws cli
+
+aws configure
+
+aws ec2 create-key-pair --key-name MyKeyPair
+
+aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" --query 'Images[0].ImageId'
+
+aws ec2 create-security-group --group-name MySecurityGroup --description "My security group"
+
+aws ec2 authorize-security-group-ingress --group-name MySecurityGroup --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-name MySecurityGroup --protocol tcp --port 80 --cidr 0.0.0.0/0
+
+aws ec2 describe-instances --instance-ids <InstanceId>
+
+ssh -i MyKeyPair.pem ec2-user@<PublicIpAddress>
