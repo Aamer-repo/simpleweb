@@ -14,3 +14,5 @@ aws ec2 run-instances \
     --key-name MyKeyPair \
     --security-groups MySecurityGroup
 
+aws ec2 describe-instances --instance-ids <InstanceId> --query 'Reservations[*].Instances[*].[State.Name,PublicIpAddress]' --output table
+
